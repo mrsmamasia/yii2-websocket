@@ -1,5 +1,5 @@
 {
-	"name": "consik/yii2-websocket",
+	"name": "mrsmamasia/yii2-websocket",
 	"description": "Yii2 websocket server component",
 	"type": "yii2-extension",
 	"keywords": ["yii2", "websocket", "component", "ratchet"],
