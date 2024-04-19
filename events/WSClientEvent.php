@@ -1,5 +1,5 @@
 <?php
-namespace consik\yii2websocket\events;
+namespace mrsmamasia\yii2websocket\events;
 
 use yii\base\Event;
 

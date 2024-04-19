@@ -1,8 +1,8 @@
 # Yii2 [WebSocketServer](/WebSocketServer.php)
 
-[![Latest Stable Version](https://poser.pugx.org/consik/yii2-websocket/v/stable)](https://packagist.org/packages/consik/yii2-websocket)
-[![Total Downloads](https://poser.pugx.org/consik/yii2-websocket/downloads)](https://packagist.org/packages/consik/yii2-websocket)
-[![License](https://poser.pugx.org/consik/yii2-websocket/license)](https://packagist.org/packages/consik/yii2-websocket)
+[![Latest Stable Version](https://poser.pugx.org/mrsmamasia/yii2-websocket/v/stable)](https://packagist.org/packages/mrsmamasia/yii2-websocket)
+[![Total Downloads](https://poser.pugx.org/mrsmamasia/yii2-websocket/downloads)](https://packagist.org/packages/mrsmamasia/yii2-websocket)
+[![License](https://poser.pugx.org/mrsmamasia/yii2-websocket/license)](https://packagist.org/packages/mrsmamasia/yii2-websocket)
 
 Used [Ratchet](http://socketo.me/)
 
@@ -13,86 +13,86 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require consik/yii2-websocket
+composer require mrsmamasia/yii2-websocket
 ```
 
 or add
 
 ```json
-"consik/yii2-websocket": "^1.0"
+"mrsmamasia/yii2-websocket": "^1.0"
 ```
 
 ## WebSocketServer class description
 
 ### Properties
 
-1. ``` int $port = 8080``` - Port number for websocket server
-2. ``` bool $closeConnectionOnError = true``` - Close connection or not when error occurs with it
-3. ``` bool $runClientCommands = true``` - Check client's messages for commands or not
-4. ``` null|IoServer $server = null``` - IOServer object
-5. ``` null|\SplObjectStorage $clients = null``` - Storage of connected clients
+1. ` int $port = 8080` - Port number for websocket server
+2. ` bool $closeConnectionOnError = true` - Close connection or not when error occurs with it
+3. ` bool $runClientCommands = true` - Check client's messages for commands or not
+4. ` null|IoServer $server = null` - IOServer object
+5. ` null|\SplObjectStorage $clients = null` - Storage of connected clients
 
 ### Methods
 
-###  Events
+### Events
 
-* EVENT_WEBSOCKET_OPEN 
+- EVENT_WEBSOCKET_OPEN
 
-> **Class** yii\base\Event - 
-Triggered when binding is successfully completed
+> **Class** yii\base\Event -
+> Triggered when binding is successfully completed
 
-* EVENT_WEBSOCKET_CLOSE 
+- EVENT_WEBSOCKET_CLOSE
 
-> **Class** yii\base\Event - 
-Triggered when socket listening is closed
+> **Class** yii\base\Event -
+> Triggered when socket listening is closed
 
-* EVENT_WEBSOCKET_OPEN_ERROR
+- EVENT_WEBSOCKET_OPEN_ERROR
 
->  **Class** [events\ExceptionEvent](/events/ExceptionEvent.php) - 
-Triggered when throwed Exception on binding socket
+> **Class** [events\ExceptionEvent](/events/ExceptionEvent.php) -
+> Triggered when throwed Exception on binding socket
 
-* EVENT_CLIENT_CONNECTED
+- EVENT_CLIENT_CONNECTED
 
-> **Class** [events\WSClientEvent](/events/WSClientEvent.php) - 
-Triggered when client connected to the server
+> **Class** [events\WSClientEvent](/events/WSClientEvent.php) -
+> Triggered when client connected to the server
 
-* EVENT_CLIENT_DISCONNECTED
+- EVENT_CLIENT_DISCONNECTED
 
-> **Class** [events\WSClientEvent](/events/WSClientEvent.php) - 
-Triggered when client close connection with server
+> **Class** [events\WSClientEvent](/events/WSClientEvent.php) -
+> Triggered when client close connection with server
 
-* EVENT_CLIENT_ERROR
+- EVENT_CLIENT_ERROR
 
-> **Class** [events\WSClientErrorEvent](/events/WSClientErrorEvent.php) - 
-Triggered when an error occurs on a Connection
+> **Class** [events\WSClientErrorEvent](/events/WSClientErrorEvent.php) -
+> Triggered when an error occurs on a Connection
 
-* EVENT_CLIENT_MESSAGE
+- EVENT_CLIENT_MESSAGE
 
-> **Class** [events\WSClientMessageEvent](/events/WSClientMessageEvent.php) - 
-Triggered when message recieved from client
+> **Class** [events\WSClientMessageEvent](/events/WSClientMessageEvent.php) -
+> Triggered when message recieved from client
 
-* EVENT_CLIENT_RUN_COMMAND
+- EVENT_CLIENT_RUN_COMMAND
 
-> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) - 
-Triggered when controller starts user's command
+> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) -
+> Triggered when controller starts user's command
 
-* EVENT_CLIENT_END_COMMAND
+- EVENT_CLIENT_END_COMMAND
 
-> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) - 
-Triggered when controller finished user's command
+> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) -
+> Triggered when controller finished user's command
 
 ## Examples
 
 ### Simple echo server
 
-Create your server class based on WebSocketServer. For example ```daemons\EchoServer.php```:
+Create your server class based on WebSocketServer. For example `daemons\EchoServer.php`:
 
 ```php
 <?php
 namespace app\daemons;
 
-use consik\yii2websocket\events\WSClientMessageEvent;
-use consik\yii2websocket\WebSocketServer;
+use mrsmamasia\yii2websocket\events\WSClientMessageEvent;
+use mrsmamasia\yii2websocket\WebSocketServer;
 
 class EchoServer extends WebSocketServer
 {
@@ -138,15 +138,15 @@ Start your server using console:
 Now let's check our server via js connection:
 
 ```javascript
-var conn = new WebSocket('ws://localhost:8080');
-    conn.onmessage = function(e) {
-        console.log('Response:' + e.data);
-    };
-    conn.onopen = function(e) {
-        console.log("Connection established!");
-        console.log('Hey!');
-        conn.send('Hey!');
-    };
+var conn = new WebSocket("ws://localhost:8080");
+conn.onmessage = function (e) {
+  console.log("Response:" + e.data);
+};
+conn.onopen = function (e) {
+  console.log("Connection established!");
+  console.log("Hey!");
+  conn.send("Hey!");
+};
 ```
 
 Console result must be:
@@ -167,7 +167,7 @@ Create yii2 console controller for starting server:
 <?php
 namespace app\commands;
 
-use consik\yii2websocket\WebSocketServer;
+use mrsmamasia\yii2websocket\WebSocketServer;
 use yii\console\Controller;
 
 class ServerController extends Controller
@@ -206,13 +206,13 @@ Server console result must be:
 
 You can implement methods that will be runned after some of user messages automatically;
 
-Server class ```daemons\CommandsServer.php```:
+Server class `daemons\CommandsServer.php`:
 
 ```php
 <?php
 namespace app\daemons;
 
-use consik\yii2websocket\WebSocketServer;
+use mrsmamasia\yii2websocket\WebSocketServer;
 use Ratchet\ConnectionInterface;
 
 class CommandsServer extends WebSocketServer
@@ -246,14 +246,14 @@ Run the server like in examples above
 Check connection and command working by js script:
 
 ```javascript
-    var conn = new WebSocket('ws://localhost:8080');
-    conn.onmessage = function(e) {
-        console.log('Response:' + e.data);
-    };
-    conn.onopen = function(e) {
-        console.log('ping');
-        conn.send('ping');
-    };
+var conn = new WebSocket("ws://localhost:8080");
+conn.onmessage = function (e) {
+  console.log("Response:" + e.data);
+};
+conn.onopen = function (e) {
+  console.log("ping");
+  conn.send("ping");
+};
 ```
 
 Console result must be:
@@ -268,14 +268,14 @@ In the end let's make simple chat with sending messages and function to change u
 
 Code without comments, try to understand it by youself ;)
 
-* Server class ```daemons\ChatServer.php```:
+- Server class `daemons\ChatServer.php`:
 
 ```php
 <?php
 namespace app\daemons;
 
-use consik\yii2websocket\events\WSClientEvent;
-use consik\yii2websocket\WebSocketServer;
+use mrsmamasia\yii2websocket\events\WSClientEvent;
+use mrsmamasia\yii2websocket\WebSocketServer;
 use Ratchet\ConnectionInterface;
 
 class ChatServer extends WebSocketServer
@@ -347,20 +347,22 @@ class ChatServer extends WebSocketServer
 }
 ```
 
-* Simple html form ```chat.html```:
+- Simple html form `chat.html`:
 
 ```html
 Username:<br />
-<input id="username" type="text"><button id="btnSetUsername">Set username</button>
+<input id="username" type="text" /><button id="btnSetUsername">
+  Set username
+</button>
 
 <div id="chat" style="width:400px; height: 250px; overflow: scroll;"></div>
 
 Message:<br />
-<input id="message" type="text"><button id="btnSend">Send</button>
+<input id="message" type="text" /><button id="btnSend">Send</button>
 <div id="response" style="color:#D00"></div>
 ```
 
-* JS code for chat with [jQuery](https://jquery.com/):
+- JS code for chat with [jQuery](https://jquery.com/):
 
 ```javascript
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -402,8 +404,8 @@ Message:<br />
 
 Enjoy ;)
 
-## Other 
+## Other
 
 ### Starting yii2 console application as daemon using [nohup](https://en.wikipedia.org/wiki/Nohup)
 
-```nohup php yii _ControllerName_/_ActionName_ &```
+`nohup php yii _ControllerName_/_ActionName_ &`

@@ -1,20 +1,20 @@
 <?php
 /**
- * @link https://github.com/consik/yii2-websocket
+ * @link https://github.com/mrsmamasia/yii2-websocket
  * @category yii2-extension
- * @package consik\yii2websocket
+ * @package mrsmamasia\yii2websocket
  * 
  * @author Sergey Poltaranin <consigliere.kz@gmail.com>
  * @copyright Copyright (c) 2016
  */
 
-namespace consik\yii2websocket;
+namespace mrsmamasia\yii2websocket;
 
-use consik\yii2websocket\events\ExceptionEvent;
-use consik\yii2websocket\events\WSClientCommandEvent;
-use consik\yii2websocket\events\WSClientErrorEvent;
-use consik\yii2websocket\events\WSClientEvent;
-use consik\yii2websocket\events\WSClientMessageEvent;
+use mrsmamasia\yii2websocket\events\ExceptionEvent;
+use mrsmamasia\yii2websocket\events\WSClientCommandEvent;
+use mrsmamasia\yii2websocket\events\WSClientErrorEvent;
+use mrsmamasia\yii2websocket\events\WSClientEvent;
+use mrsmamasia\yii2websocket\events\WSClientMessageEvent;
 use Ratchet\ConnectionInterface;
 use Ratchet\Http\HttpServer;
 use Ratchet\MessageComponentInterface;
